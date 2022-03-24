@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>About</title>
+    <!-- Favicons -->
+
+    <link href="{% static 'img/logo1.png' %}" rel="icon">
+    <link href="{% static 'img/logo1.png' %}"
+          rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href=" {% static 'vendor/fontawesome-free/css/all.min.css' %} " rel="stylesheet">
+    <link href="{% static ' vendor/animate.css/animate.min.css' %} " rel="stylesheet">
+    <link href=" {% static 'vendor/bootstrap/css/bootstrap.min.css ' %} " rel="stylesheet">
+    <link href=" {% static ' vendor/bootstrap-icons/bootstrap-icons.css' %} " rel="stylesheet">
+    <link href=" {% static 'vendor/boxicons/css/boxicons.min.css ' %} " rel="stylesheet">
+    <link href=" {% static ' vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href=" {% static 'vendor/remixicon/remixicon.css ' %}" rel="stylesheet">
+    <link href="{% static ' vendor/swiper/swiper-bundle.min.css' %} " rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'css/style.css' %} " rel="stylesheet">
+
+</head>
+<body>
+<section>
+    <header class="fixed-top" id="header">
+        <div class="container d-flex align-items-center">
+
+            <img alt="logo" class="logo me-auto"
+                 height="50" onclick="{% url 'home' %}"
+                 src="{% static 'img/logo1.png' %}"
+                 width=70">
+
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+            <nav class="navbar order-last order-lg-0" id="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto " href="{% url 'home' %}">Home</a></li>
+                    <li><a class="nav-link scrollto " href="{% url 'services' %}">Departments</a></li>
+                    <li><a class="nav-link scrollto" href="{% url 'addPatient' %}">Take Appointment </a></li>
+                    {% if user.is_authenticated %}
+                    <li><a class="nav-link scrollto " href="{% url 'dashboard' %}">Dashboard </a></li>
+
+                    {% endif %}
+                    <li><a class="nav-link scrollto" href="{% url 'doctors' %}">Doctors</a></li>
+                    <li><a class="nav-link scrollto active" href="{% url 'about' %}">About</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+            {% if user.is_authenticated %}
+            <a class="appointment-btn scrollto" href="{% url 'logout' %}"><span
+                    class="d-none d-md-inline">Logout </span> </a>
+            {% else %}
+            <a class="appointment-btn scrollto" href="{% url 'login' %}"><span
+                    class="d-none d-md-inline">Login / </span> Sign Up</a>
+            {% endif %}
+        </div>
+    </header><!-- End Header -->
+
+
+    <!-- ======= About Section ======= -->
+    <section class="about" id="about">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative">
+                    <a class="glightbox play-btn mb-4" href="https://www.youtube.com/watch?v=jDDaplaOz7Q"></a>
+                </div>
+
+                <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+                    <h1>We Love
+                        To Help
+                    </h1>
+                    <h3>Health Support 24x7</h3>
+                    <p>
+                        Our value system defines us, and acts as an anchor when we are faced with challenges. We have a
+                        culture of customer focus, continuous improvement and customer service.
+
+
+                    </p>
+
+
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section class="contact" id="contact">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Contact</h2>
+            </div>
+        </div>
+
+        <div>
+            <iframe allowfullscreen=""
+                    loading="lazy" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15136.492241481268!2d73.7980067!3d18.4780842!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xcae08811144392a!2sTech%20Amplifiers!5e0!3m2!1sen!2sin!4v1647427406729!5m2!1sen!2sin" style="border:5; width: 100%; height: 350px;"></iframe>
+        </div>
+
+        <div class="container">
+            <div class="row mt-5">
+
+                <div class="col-lg-4">
+                    <div class="info">
+                        <div class="address">
+                            <i class="bi bi-geo-alt"></i>
+                            <h4>Location:</h4>
+                            <p>NDA Rd, Bhagirathi Nagar, Warje, Pune, Maharashtra 411058</p>
+                        </div>
+
+                        <div class="email">
+                            <i class="bi bi-envelope"></i>
+                            <h4>Email:</h4>
+                            <p>info@example.com</p>
+                        </div>
+
+                        <div class="phone">
+                            <i class="bi bi-phone"></i>
+                            <h4>Call:</h4>
+                            <p> 0123456789</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-8 mt-5 mt-lg-0">
+
+                    <form class="php-email-form" method="post" role="form">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <input class="form-control" id="name" name="" placeholder="Your Name" required
+                                       type="text">
+                            </div>
+                            <div class="col-md-6 form-group mt-3 mt-md-0">
+                                <input class="form-control" id="email" name="" placeholder="Your Email" required
+                                       type="email">
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <input class="form-control" id="subject" name="" placeholder="Subject" required
+                                   type="text">
+                        </div>
+                        <div class="form-group mt-3">
+                        <textarea class="form-control" name="" placeholder="Message" required
+                                  rows="5"></textarea>
+                        </div>
+                        <div class="my-3">
+                            <div class="loading">Loading</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit">Send Message</button>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Contact Section -->
+</section>
+
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

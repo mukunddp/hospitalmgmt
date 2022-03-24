@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Services</title>
+    <!-- Favicons -->
+
+    <link href="{% static 'img/logo1.png' %}" rel="icon">
+    <link href="{% static 'img/logo1.png' %}"
+          rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href=" {% static 'vendor/fontawesome-free/css/all.min.css' %} " rel="stylesheet">
+    <link href="{% static ' vendor/animate.css/animate.min.css' %} " rel="stylesheet">
+    <link href=" {% static 'vendor/bootstrap/css/bootstrap.min.css ' %} " rel="stylesheet">
+    <link href=" {% static ' vendor/bootstrap-icons/bootstrap-icons.css' %} " rel="stylesheet">
+    <link href=" {% static 'vendor/boxicons/css/boxicons.min.css ' %} " rel="stylesheet">
+    <link href=" {% static ' vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href=" {% static 'vendor/remixicon/remixicon.css ' %}" rel="stylesheet">
+    <link href="{% static ' vendor/swiper/swiper-bundle.min.css' %} " rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'css/style.css' %} " rel="stylesheet">
+
+</head>
+<body>
+
+<section class="counts">
+
+
+    <header class="fixed-top" id="header">
+        <div class="container d-flex align-items-center">
+
+            <img alt="logo" class="logo me-auto"
+                 height="50" onclick="{% url 'home' %}"
+                 src="{% static 'img/logo1.png' %}"
+                 width=70">
+
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+            <nav class="navbar order-last order-lg-0" id="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto " href="{% url 'home' %}">Home</a></li>
+                    <li><a class="nav-link scrollto active" href="{% url 'services' %}">Departments</a></li>
+                    <li><a class="nav-link scrollto" href="{% url 'addPatient' %}">Take Appointment </a></li>
+                    {% if user.is_authenticated %}
+                    <li><a class="nav-link scrollto " href="{% url 'dashboard' %}">Dashboard </a></li>
+
+                    {% endif %}
+                    <li><a class="nav-link scrollto" href="{% url 'doctors' %}">Doctors</a></li>
+                    <li><a class="nav-link scrollto" href="{% url 'about' %}">About</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+            {% if user.is_authenticated %}
+            <a class="appointment-btn scrollto" href="{% url 'logout' %}"><span
+                    class="d-none d-md-inline">Logout </span> </a>
+            {% else %}
+            <a class="appointment-btn scrollto" href="{% url 'login' %}"><span
+                    class="d-none d-md-inline">Login / </span> Sign Up</a>
+            {% endif %}
+        </div>
+    </header><!-- End Header -->
+
+
+    <div class="container p-5 my-5 border" style="backdrop-filter: blur(15px);">
+        {% if user.is_authenticated %}
+        <h2 class="text-center p-2">Our Services !</h2>
+
+
+        <div class="d-flex justify-content-between">
+                <a class="appointment-btn scrollto" href="{% url 'addServices' %}">
+                    <span class="d-none d-md-inline"> Add Services </span> </a>
+
+                <a class="appointment-btn scrollto" href="{% url 'addPatient' %}">
+                    <span class="d-none d-md-inline"> Add Patient </span> </a>
+
+        </div>
+        <br>
+        <table class="table table-striped">
+            <thead>
+            <th scope="col" style="text-align: center;">Id</th>
+            <th scope="col" style="text-align: center;">Services</th>
+            <th scope="col" style="text-align: center;">Availability</th>
+            <th scope="col" style="text-align: center;">Specialist</th>
+            <th scope="col" style="text-align: center;">Action</th>
+            </thead>
+
+            <tbody>
+            {% for services in serviceList%}
+
+            <tr>
+                <td>{{services.id}}</td>
+                <td class="fw-bold" style="text-align: center;">{{services.services}}</td>
+                <td class="fw-bold" style="text-align: center;">{{services.availability}}</td>
+                <td class="fw-bold" style="text-align: center;">{{services.specialist}}</td>
+                <td style="text-align: center;">
+                    <a class="appointment-btn bg-secondary" href="{% url 'updateServices' services.id %}">
+                        <span class="d-none d-md-inline"> Update Services </span>
+                    </a>
+                    <a class="appointment-btn bg-danger " href="{% url 'deleteService' services.id %}">
+                        <span class="d-none d-md-inline"> Delete Services </span>
+                    </a>
+
+
+                </td>
+            </tr>
+
+            {%endfor%}
+            </tbody>
+        </table>
+
+        {% else %}
+
+        <h2 class="text-center p-2">Our Services !</h2>
+
+
+        <table class="table table-striped">
+
+            <thead>
+            <th scope="col" style="text-align: center;">Id</th>
+            <th scope="col" style="text-align: center;">Services</th>
+            <th scope="col" style="text-align: center;">Availability</th>
+            <th scope="col" style="text-align: center;">Specialist</th>
+            </thead>
+
+            <tbody>
+            {% for services in serviceList%}
+            <tr>
+                <td style="text-align: center;">{{services.id}}</td>
+                <td class="fw-bold" style="text-align: center;">{{services.services}}</td>
+                <td class="fw-bold" style="text-align: center;">{{services.availability}}</td>
+                <td class="fw-bold" style="text-align: center;">{{services.specialist}}</td>
+            </tr>
+
+            {%endfor%}
+
+            </tbody>
+        </table>
+
+        {% endif %}
+
+    </div>
+
+</section>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

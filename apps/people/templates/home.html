@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+            {% load static %}
+            <meta charset="UTF-8">
+            <title>Home</title>
+            <!-- Favicons -->
+
+            <link href="{% static 'img/logo1.png' %}" rel="icon">
+            <link href="{% static 'img/logo1.png' %}"
+                  rel="apple-touch-icon">
+
+            <!-- Google Fonts -->
+            <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+                  rel="stylesheet">
+
+            <!-- Vendor CSS Files -->
+            <link href=" {% static 'vendor/fontawesome-free/css/all.min.css' %} " rel="stylesheet">
+            <link href="{% static ' vendor/animate.css/animate.min.css' %} " rel="stylesheet">
+            <link href=" {% static 'vendor/bootstrap/css/bootstrap.min.css ' %} " rel="stylesheet">
+            <link href=" {% static ' vendor/bootstrap-icons/bootstrap-icons.css' %} " rel="stylesheet">
+            <link href=" {% static 'vendor/boxicons/css/boxicons.min.css ' %} " rel="stylesheet">
+            <link href=" {% static ' vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+            <link href=" {% static 'vendor/remixicon/remixicon.css ' %}" rel="stylesheet">
+            <link href="{% static ' vendor/swiper/swiper-bundle.min.css' %} " rel="stylesheet">
+
+            <!-- Template Main CSS File -->
+            <link href="{% static 'css/style.css' %} " rel="stylesheet">
+
+        </head>
+
+
+
+<body>
+
+        <header class="fixed-top" id="header">
+            <div class="container d-flex align-items-center">
+
+                <img alt="logo" class="logo me-auto"
+                     height="50" onclick="{% url 'home' %}"
+                     src="{% static 'img/logo1.png' %} "
+                     width=70">
+
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+                <nav class="navbar order-last order-lg-0" id="navbar">
+                    <ul>
+                        <li><a class="nav-link scrollto active " href="{% url 'home' %}">Home</a></li>
+                        <li><a class="nav-link scrollto " href="{% url 'services' %}">Departments</a></li>
+                        <li><a class="nav-link scrollto" href="{% url 'addPatient' %}">Take Appointment </a></li>
+                        {% if user.is_authenticated %}
+                        <li><a class="nav-link scrollto " href="{% url 'dashboard' %}">Dashboard </a></li>
+
+                        {% endif %}
+                        <li><a class="nav-link scrollto" href="{% url 'doctors' %}">Doctors</a></li>
+                        <li><a class="nav-link scrollto" href="{% url 'about' %}">About</a></li>
+                    </ul>
+                    <i class="bi bi-list mobile-nav-toggle"></i>
+                </nav><!-- .navbar -->
+                {% if user.is_authenticated %}
+                <a class="appointment-btn scrollto" href="{% url 'logout' %}"><span
+                        class="d-none d-md-inline">Logout </span> </a>
+                {% else %}
+                <a class="appointment-btn scrollto" href="{% url 'login' %}"><span
+                        class="d-none d-md-inline">Login / </span> Sign Up</a>
+                {% endif %}
+            </div>
+        </header><!-- End Header -->
+
+    <section class="d-flex align-items-center" id="hero">
+        <div class="container">
+            <h1>Welcome to Hospital</h1>
+            <h2>Hello, {{ user.username | default:'Guest' }} </h2>
+            <a class="btn-get-started scrollto" href="{% url 'home' %}">Get Started</a>
+        </div>
+    </section><!-- End Hero -->
+
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-12 d-flex align-items-stretch">
+                    <div class="icon-boxes d-flex flex-column justify-content-center">
+                        <div class="row">
+
+                            <div class="col-xl-3 d-flex align-items-stretch">
+                                <div class="icon-box mt-4 mt-xl-0">
+                                     <i class="fas fa-user-md"></i>
+                                    <h4>Doctors</h4>
+                                    <p>
+                                        We have Experienced and talented doctors who are ready to give their 100%.
+                                    </p>
+
+                                     <a class="appointment-btn scrollto" href="{% url 'doctors' %}"><span
+                                        class="d-none d-md-inline">Learn More </span> </a>
+
+                                </div>
+                            </div>
+
+                            <div class="col-xl-3 d-flex align-items-stretch">
+                                <div class="icon-box mt-4 mt-xl-0">
+                                    <i class="far fa-hospital"></i>
+                                    <h4>Our Services</h4>
+                                    <p>
+                                        Our focus is to provide healthy life to everyone and smile on face.
+                                    </p>
+
+                                    <a class="appointment-btn scrollto" href="{% url 'services' %}"><span
+                                        class="d-none d-md-inline">Learn More </span> </a>
+
+                                </div>
+                            </div>
+
+                            <div class="col-xl-3 d-flex align-items-stretch">
+                                <div class="icon-box mt-4 mt-xl-0">
+                                    <i class="bx bx-cube-alt"></i>
+                                    <h4>Take Appointment</h4>
+                                    <p>
+                                        Please provide your details, So that you don't have to wait a long time.
+                                    </p>
+
+                                     <a class="appointment-btn scrollto" href="{% url 'addPatient' %}"><span
+                                        class="d-none d-md-inline">Learn More </span> </a>
+                                </div>
+                            </div>
+
+
+                            <div class="col-xl-3 d-flex align-items-stretch">
+                                <div class="icon-box mt-4 mt-xl-0">
+                                    <i class="bx bx-images"></i>
+                                    <h4>Gallery</h4>
+                                    <p> Take a look towards the facilities and infrastructure that we are providing </p>
+                                    <a class="appointment-btn scrollto" href="#gallery"><span
+                                        class=" d-md-inline">Learn More </span> </a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div><!-- End .content-->
+                </div>
+            </div>
+        </div>
+    </section><!-- End Why Us Section -->
+
+
+    <section class="counts" id="counts">
+        <div class="container">
+
+            <div class="row">
+                    <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+                    <div class="count-box">
+                        <i class="fas fa-award"></i>
+                        <span class="purecounter" data-purecounter-duration="1" data-purecounter-end="{{count.count}}"
+                              data-purecounter-start="0"> {{count.count}}</span>
+                        <p> Admitted Patients </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="count-box">
+                        <i class="fas fa-user-md"></i>
+                        <span class="purecounter" data-purecounter-duration="1" data-purecounter-end="{{serv}}"
+                              data-purecounter-start="0"></span>
+                        <p>Doctors</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
+                    <div class="count-box">
+                        <i class="far fa-hospital"></i>
+                        <span class="purecounter" data-purecounter-duration="1" data-purecounter-end="{{serv}}"
+                              data-purecounter-start="0"></span>
+                        <p>Departments</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+                    <div class="count-box">
+                        <i class="fas fa-flask"></i>
+                        <span class="purecounter" data-purecounter-duration="1" data-purecounter-end="4"
+                              data-purecounter-start="0"></span>
+                        <p>Research Labs</p>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </section><!-- End Counts Section -->
+
+    <section class="gallery" id="gallery">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Gallery</h2>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row g-0">
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a class="galelry-lightbox" href="{% static 'img/gallery/gallery-1.jpg' %}">
+                            <img alt="" class="img-fluid" src="{% static 'img/gallery/gallery-1.jpg' %}">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a class="galelry-lightbox" href="{% static 'img/gallery/gallery-2.jpg' %}">
+                            <img alt="" class="img-fluid" src="{% static 'img/gallery/gallery-2.jpg' %}">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a class="galelry-lightbox" href="{% static 'img/gallery/gallery-3.jpg' %}">
+                            <img alt="" class="img-fluid" src="{% static 'img/gallery/gallery-3.jpg' %}">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a class="galelry-lightbox" href="{% static 'img/gallery/gallery-4.jpg' %}">
+                            <img alt="" class="img-fluid" src="{% static 'img/gallery/gallery-4.jpg' %}">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a class="galelry-lightbox" href="{% static 'img/gallery/gallery-5.jpg' %}">
+                            <img alt="" class="img-fluid" src="{% static 'img/gallery/gallery-5.jpg' %}">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a class="galelry-lightbox" href="{% static 'img/gallery/gallery-6.jpg' %}">
+                            <img alt="" class="img-fluid" src="{% static 'img/gallery/gallery-6.jpg' %}">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a class="galelry-lightbox" href="{% static 'img/gallery/gallery-7.jpg' %}">
+                            <img alt="" class="img-fluid" src="{% static 'img/gallery/gallery-7.jpg' %}">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a class="galelry-lightbox" href="{% static 'img/gallery/gallery-8.jpg' %}">
+                            <img alt="" class="img-fluid" src="{% static 'img/gallery/gallery-8.jpg' %}">
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Gallery Section -->
+
+        <script src=" {% static 'vendor/purecounter/purecounter.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
