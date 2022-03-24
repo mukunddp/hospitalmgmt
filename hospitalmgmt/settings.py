@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-5-a4_y7geu(e@ewi)g=3us#0=)kmtsv8^)_@s1(7rt4^ckeval'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
@@ -81,28 +81,28 @@ WSGI_APPLICATION = 'hospitalmgmt.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'hospital',
-#         'USER': 'postgres',
-#         'PASSWORD': 'Mukund@123',
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432',
-#
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': '<database_name>',
-        'USER': '<user_name>',
-        'PASSWORD': '<password>',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'hospital',
+        'USER': 'postgres',
+        'PASSWORD': 'Mukund@123',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': '<database_name>',
+#         'USER': '<user_name>',
+#         'PASSWORD': '<password>',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 
 WHITENOISE_USE_FINDERS = True
